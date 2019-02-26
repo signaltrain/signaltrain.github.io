@@ -1,7 +1,20 @@
-Placeholder for SignalTrain project results.
+<title>SignalTrain samples</title>
+<img src="stlogo.png">
+<h2>SignalTrain Samples</h2>
+
+<h3>LA-2A: (model is Teletronix, bought new from Sweetwater ca. 2010)</h3>
+- Input signal: <a href="input_1_.wav"> input_1_.wav</a><br>
 <br>
+ - "Target" (aka real) LA-2A output (Switch=Compressor, Gain=20, Gain Reduction=95 -- i.e. "strong" compression):<a href="target_1_LA2A_3c__0__20__95.wav"> target_1_LA2A_3c__0__20__95.wav</a><br>
 <br>
+ - Predicted output from neural network: <a href="y_pred_1_LA2A_3c__0__20__95.wav"> y_pred_1_LA2A_3c__0__20__95.wav</a><br>
 
-To be filled in soon!
-
-
+<br>
+<b>Few things:</b> 
+<ul>
+<li>The neural network processes the audio in "chunks" or "windows." The "input window" is only 8192 samples long, so at 44.1 kHz this means we can't reproduce signals below 5 Hz. 
+<li>The "output window" is 2048 samples; the good news is that although this could produce a 'glitch' every 2048 samples, or a frequency of 21.5 Hz, 
+in fact no such peak occurs nor is any 'glitching' audible -- i.e., we are getting the phases right. 
+<li>What is audible is noise. On a power spectrum the added noise is visible above 13 kHz; low-pass-filtering this helps a bit but not much, as there is plenty of lower-frequency noise as well. 
+<li>Little back-of-the-envelope calculation: the Mean-Squared Error between the target and the signal is around 5E-05. Does that mean the noise is comparable to -21dB? 
+</ul>
